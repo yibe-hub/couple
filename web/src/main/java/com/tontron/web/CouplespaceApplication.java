@@ -1,5 +1,6 @@
-package com.yibe.coupleSpace;
+package com.tontron.web;
 
+import com.tontron.web.config.CoupleConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
