@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/couple")
-public class coupleOpenApp {
+public class CoupleOpenApp {
+
 
     @GetMapping("/hello")
     public String home() {
