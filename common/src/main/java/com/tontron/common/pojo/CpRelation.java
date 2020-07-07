@@ -27,7 +27,7 @@ public class CpRelation implements Serializable{
 	private Date updateDate;//更新时间
 
     @Column(name = "status_cd")
-	private Integer statusCd;//关系状态
+	private Integer statusCd;//关系状态，0=新建，1=完成，3=取消，4=作废
 
     @Column(name = "male_user_id")
 	private Long maleUserId;//外键，关联的男用户

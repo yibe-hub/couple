@@ -3,13 +3,16 @@ package com.tontron.common.serviceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.tontron.common.mapper.CpRelationMapper;
+import com.tontron.common.mapper.CpUserMapper;
 import com.tontron.common.pojo.CpRelation;
+import com.tontron.common.pojo.CpUser;
 import com.tontron.common.service.CpRelationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.Date;
 import java.util.List;
 
 /****
@@ -22,6 +25,8 @@ public class CpRelationServiceImpl implements CpRelationService {
 
     @Autowired
     private CpRelationMapper cpRelationMapper;
+    @Autowired
+    private CpUserMapper cpUserMapper;
 
 
     /**
@@ -162,5 +167,69 @@ public class CpRelationServiceImpl implements CpRelationService {
     @Override
     public List<CpRelation> findAll() {
         return cpRelationMapper.selectAll();
+    }
+
+    //创建新的关系
+    public Boolean createNewRelation(String wxId){
+        CpUser cpUser = new CpUser();
+        cpUser.setWxId(wxId);
+        cpUser.setStatusCd(0);
+        List<CpUser> list = cpUserMapper.select(cpUser);
+        if(list!=null && list.size()>0){
+            CpUser user = list.get(0);
+            CpRelation cpRelation = new CpRelation();
+            if(user.getUserGender().equals("0")){
+                cpRelation.setFemaleUserId(user.getUserId());
+            }else {
+                cpRelation.setMaleUserId(user.getUserId());
+            }
+            List<CpRelation> cpRelations = cpRelationMapper.select(cpRelation);
+            if(cpRelations!= null && cpRelations.size()>0){
+                for(CpRelation cp:cpRelations){
+                    if(cp.getStatusCd().equals("1")){
+                        return false;
+                    }
+                }
+            }
+
+            cpRelation.setCreateDate(new Date());
+            cpRelation.setUpdateDate(new Date());
+            cpRelation.setStatusCd(0);
+            cpRelation.setCreateUser(user.getUserId());
+            cpRelation.setRelationDays(0L);
+
+            cpRelationMapper.insert(cpRelation);
+        }
+        return true;
+    }
+
+    //确认关系
+    public Boolean confirmRelation(String wxId,Long relId){
+        CpUser cpUser = new CpUser();
+        cpUser.setWxId(wxId);
+        cpUser.setStatusCd(0);
+        List<CpUser> list = cpUserMapper.select(cpUser);
+        if(list!=null && list.size()>0){
+            CpUser user = list.get(0);
+            CpRelation cpRelation = new CpRelation();
+            cpRelation.setRelationId(relId);
+            cpRelation.setStatusCd(0);
+            List<CpRelation> relations = cpRelationMapper.select(cpRelation);
+            if(relations!=null && relations.size()>0){
+                CpRelation relation = relations.get(0);
+                if(relation.getFemaleUserId()==null){
+                    relation.setFemaleUserId(user.getUserId());
+                }else if(relation.getMaleUserId()==null){
+                    relation.setMaleUserId(user.getUserId());
+                }
+                update(relation);
+            }
+            else {
+                return false;
+            }
+        }else {
+            return false;
+        }
+        return true;
     }
 }

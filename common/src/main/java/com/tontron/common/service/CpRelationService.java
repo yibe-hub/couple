@@ -66,4 +66,10 @@ public interface CpRelationService {
      * @return
      */
     List<CpRelation> findAll();
+
+    //创建新关系
+    Boolean createNewRelation(String wxId);
+
+    //确认关系
+    Boolean confirmRelation(String wxId,Long relId);
 }

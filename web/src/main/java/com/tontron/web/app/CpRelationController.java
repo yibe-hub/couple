@@ -8,6 +8,7 @@ import com.tontron.common.pojo.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /****
@@ -21,7 +22,7 @@ import java.util.List;
 @CrossOrigin
 public class CpRelationController {
 
-    @Autowired
+    @Resource
     private CpRelationService cpRelationService;
 
     /***
@@ -123,5 +124,19 @@ public class CpRelationController {
         //调用CpRelationService实现查询所有CpRelation
         List<CpRelation> list = cpRelationService.findAll();
         return new Result<List<CpRelation>>(true, StatusCode.OK,"查询成功",list) ;
+    }
+
+    //创建新关系
+    @PostMapping
+    public Boolean createNewRelation(String wxId){
+        Boolean isSuccess = cpRelationService.createNewRelation(wxId);
+        return isSuccess;
+    }
+
+    //确认关系
+    @PostMapping
+    public Boolean confirmRelation(String wxId,Long relId){
+        Boolean isSuccess = cpRelationService.confirmRelation(wxId,relId);
+        return isSuccess;
     }
 }
