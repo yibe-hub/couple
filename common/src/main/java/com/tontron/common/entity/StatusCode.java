@@ -1,4 +1,4 @@
-package com.tontron.common.pojo;
+package com.tontron.common.entity;
 
 /**
  * 返回码

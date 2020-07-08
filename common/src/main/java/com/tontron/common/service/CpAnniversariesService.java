@@ -1,7 +1,7 @@
 package com.tontron.common.service;
 
 import com.github.pagehelper.PageInfo;
-import com.tontron.common.pojo.CpAnniversaries;
+import com.tontron.common.entity.CpAnniversaries;
 
 import java.util.List;
 

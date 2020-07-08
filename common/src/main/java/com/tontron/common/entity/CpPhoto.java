@@ -1,4 +1,4 @@
-package com.tontron.common.pojo;
+package com.tontron.common.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;

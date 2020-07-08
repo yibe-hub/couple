@@ -1,7 +1,7 @@
 package com.tontron.common.service;
 
 import com.github.pagehelper.PageInfo;
-import com.tontron.common.pojo.CpRelation;
+import com.tontron.common.entity.CpRelation;
 
 import java.util.List;
 

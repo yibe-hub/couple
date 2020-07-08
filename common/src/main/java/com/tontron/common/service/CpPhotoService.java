@@ -1,7 +1,7 @@
 package com.tontron.common.service;
 
 import com.github.pagehelper.PageInfo;
-import com.tontron.common.pojo.CpPhoto;
+import com.tontron.common.entity.CpPhoto;
 
 import java.util.List;
 

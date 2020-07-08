@@ -1,5 +1,5 @@
 package com.tontron.common.mapper;
-import com.tontron.common.pojo.CpPhoto;
+import com.tontron.common.entity.CpPhoto;
 import tk.mybatis.mapper.common.Mapper;
 
 /****

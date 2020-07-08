@@ -3,7 +3,7 @@ package com.tontron.common.serviceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.tontron.common.mapper.CpUserMapper;
-import com.tontron.common.pojo.CpUser;
+import com.tontron.common.entity.CpUser;
 import com.tontron.common.service.CpUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

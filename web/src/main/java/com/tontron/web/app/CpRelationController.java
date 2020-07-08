@@ -1,11 +1,10 @@
 package com.tontron.web.app;
 
 import com.github.pagehelper.PageInfo;
-import com.tontron.common.pojo.CpRelation;
+import com.tontron.common.entity.CpRelation;
 import com.tontron.common.service.CpRelationService;
-import com.tontron.common.pojo.Result;
-import com.tontron.common.pojo.StatusCode;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.tontron.common.entity.Result;
+import com.tontron.common.entity.StatusCode;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -127,16 +126,22 @@ public class CpRelationController {
     }
 
     //创建新关系
-    @PostMapping
-    public Boolean createNewRelation(String wxId){
+    @PostMapping("/createNewRelation")
+    public Result createNewRelation(@PathVariable String wxId){
         Boolean isSuccess = cpRelationService.createNewRelation(wxId);
-        return isSuccess;
+        if(isSuccess){
+            return new Result(true,StatusCode.OK,"添加成功");
+        }
+        return new Result(false,StatusCode.ERROR,"添加失败");
     }
 
     //确认关系
-    @PostMapping
-    public Boolean confirmRelation(String wxId,Long relId){
+    @PostMapping("/confirmRelation")
+    public Result confirmRelation(@PathVariable String wxId,@PathVariable Long relId){
         Boolean isSuccess = cpRelationService.confirmRelation(wxId,relId);
-        return isSuccess;
+        if(isSuccess){
+            return new Result(true,StatusCode.OK,"添加成功");
+        }
+        return new Result(false,StatusCode.ERROR,"添加失败");
     }
 }

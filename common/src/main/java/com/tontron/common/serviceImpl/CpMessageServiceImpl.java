@@ -3,7 +3,7 @@ package com.tontron.common.serviceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.tontron.common.mapper.CpMessageMapper;
-import com.tontron.common.pojo.CpMessage;
+import com.tontron.common.entity.CpMessage;
 import com.tontron.common.service.CpMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

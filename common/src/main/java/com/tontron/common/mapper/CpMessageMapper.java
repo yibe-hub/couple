@@ -1,5 +1,5 @@
 package com.tontron.common.mapper;
-import com.tontron.common.pojo.CpMessage;
+import com.tontron.common.entity.CpMessage;
 import tk.mybatis.mapper.common.Mapper;
 
 /****

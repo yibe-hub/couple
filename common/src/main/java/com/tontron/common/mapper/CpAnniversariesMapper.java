@@ -1,5 +1,5 @@
 package com.tontron.common.mapper;
-import com.tontron.common.pojo.CpAnniversaries;
+import com.tontron.common.entity.CpAnniversaries;
 import tk.mybatis.mapper.common.Mapper;
 
 /****

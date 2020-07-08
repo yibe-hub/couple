@@ -1,10 +1,10 @@
 package com.tontron.web.app;
 
 import com.github.pagehelper.PageInfo;
-import com.tontron.common.pojo.CpMessage;
+import com.tontron.common.entity.CpMessage;
 import com.tontron.common.service.CpMessageService;
-import com.tontron.common.pojo.Result;
-import com.tontron.common.pojo.StatusCode;
+import com.tontron.common.entity.Result;
+import com.tontron.common.entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

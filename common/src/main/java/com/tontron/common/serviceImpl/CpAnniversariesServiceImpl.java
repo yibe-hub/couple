@@ -3,7 +3,7 @@ package com.tontron.common.serviceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.tontron.common.mapper.CpAnniversariesMapper;
-import com.tontron.common.pojo.CpAnniversaries;
+import com.tontron.common.entity.CpAnniversaries;
 import com.tontron.common.service.CpAnniversariesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
