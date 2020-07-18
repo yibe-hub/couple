@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.Date;
 import java.util.List;
 
 /****
@@ -146,6 +147,9 @@ public class CpUserServiceImpl implements CpUserService {
      */
     @Override
     public void add(CpUser cpUser){
+        cpUser.setCreateDate(new Date());
+        cpUser.setUpdateDate(new Date());
+        cpUser.setStatusCd(0);
         cpUserMapper.insert(cpUser);
     }
 

@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.anson.dao.CpAlbumMapper">
+  <resultMap id="BaseResultMap" type="com.anson.model.CpAlbum">
+    <id column="album_id" jdbcType="BIGINT" property="albumId" />
+    <result column="album_name" jdbcType="VARCHAR" property="albumName" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="album_describe" jdbcType="VARCHAR" property="albumDescribe" />
+    <result column="create_user" jdbcType="BIGINT" property="createUser" />
+    <result column="status_cd" jdbcType="TINYINT" property="statusCd" />
+    <result column="relation_id" jdbcType="BIGINT" property="relationId" />
+    <result column="ann_id" jdbcType="BIGINT" property="annId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    album_id, album_name, create_date, update_date, album_describe, create_user, status_cd, 
+    relation_id, ann_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cp_album
+    where album_id = #{albumId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from cp_album
+    where album_id = #{albumId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.anson.model.CpAlbum">
+    insert into cp_album (album_id, album_name, create_date, 
+      update_date, album_describe, create_user, 
+      status_cd, relation_id, ann_id
+      )
+    values (#{albumId,jdbcType=BIGINT}, #{albumName,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{albumDescribe,jdbcType=VARCHAR}, #{createUser,jdbcType=BIGINT}, 
+      #{statusCd,jdbcType=TINYINT}, #{relationId,jdbcType=BIGINT}, #{annId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.anson.model.CpAlbum">
+    insert into cp_album
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="albumId != null">
+        album_id,
+      </if>
+      <if test="albumName != null">
+        album_name,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="albumDescribe != null">
+        album_describe,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="statusCd != null">
+        status_cd,
+      </if>
+      <if test="relationId != null">
+        relation_id,
+      </if>
+      <if test="annId != null">
+        ann_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="albumId != null">
+        #{albumId,jdbcType=BIGINT},
+      </if>
+      <if test="albumName != null">
+        #{albumName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="albumDescribe != null">
+        #{albumDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="statusCd != null">
+        #{statusCd,jdbcType=TINYINT},
+      </if>
+      <if test="relationId != null">
+        #{relationId,jdbcType=BIGINT},
+      </if>
+      <if test="annId != null">
+        #{annId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.anson.model.CpAlbum">
+    update cp_album
+    <set>
+      <if test="albumName != null">
+        album_name = #{albumName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="albumDescribe != null">
+        album_describe = #{albumDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="statusCd != null">
+        status_cd = #{statusCd,jdbcType=TINYINT},
+      </if>
+      <if test="relationId != null">
+        relation_id = #{relationId,jdbcType=BIGINT},
+      </if>
+      <if test="annId != null">
+        ann_id = #{annId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where album_id = #{albumId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.anson.model.CpAlbum">
+    update cp_album
+    set album_name = #{albumName,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      album_describe = #{albumDescribe,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=BIGINT},
+      status_cd = #{statusCd,jdbcType=TINYINT},
+      relation_id = #{relationId,jdbcType=BIGINT},
+      ann_id = #{annId,jdbcType=BIGINT}
+    where album_id = #{albumId,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.anson.model.CpAlbum">
+    <id column="album_id" jdbcType="BIGINT" property="albumId" />
+    <result column="album_name" jdbcType="VARCHAR" property="albumName" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="album_describe" jdbcType="VARCHAR" property="albumDescribe" />
+    <result column="create_user" jdbcType="BIGINT" property="createUser" />
+    <result column="status_cd" jdbcType="TINYINT" property="statusCd" />
+    <result column="relation_id" jdbcType="BIGINT" property="relationId" />
+    <result column="ann_id" jdbcType="BIGINT" property="annId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    album_id, album_name, create_date, update_date, album_describe, create_user, status_cd, 
+    relation_id, ann_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cp_album
+    where album_id = #{albumId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from cp_album
+    where album_id = #{albumId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.anson.model.CpAlbum">
+    insert into cp_album (album_id, album_name, create_date, 
+      update_date, album_describe, create_user, 
+      status_cd, relation_id, ann_id
+      )
+    values (#{albumId,jdbcType=BIGINT}, #{albumName,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{albumDescribe,jdbcType=VARCHAR}, #{createUser,jdbcType=BIGINT}, 
+      #{statusCd,jdbcType=TINYINT}, #{relationId,jdbcType=BIGINT}, #{annId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.anson.model.CpAlbum">
+    insert into cp_album
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="albumId != null">
+        album_id,
+      </if>
+      <if test="albumName != null">
+        album_name,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="albumDescribe != null">
+        album_describe,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="statusCd != null">
+        status_cd,
+      </if>
+      <if test="relationId != null">
+        relation_id,
+      </if>
+      <if test="annId != null">
+        ann_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="albumId != null">
+        #{albumId,jdbcType=BIGINT},
+      </if>
+      <if test="albumName != null">
+        #{albumName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="albumDescribe != null">
+        #{albumDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="statusCd != null">
+        #{statusCd,jdbcType=TINYINT},
+      </if>
+      <if test="relationId != null">
+        #{relationId,jdbcType=BIGINT},
+      </if>
+      <if test="annId != null">
+        #{annId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.anson.model.CpAlbum">
+    update cp_album
+    <set>
+      <if test="albumName != null">
+        album_name = #{albumName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="albumDescribe != null">
+        album_describe = #{albumDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="statusCd != null">
+        status_cd = #{statusCd,jdbcType=TINYINT},
+      </if>
+      <if test="relationId != null">
+        relation_id = #{relationId,jdbcType=BIGINT},
+      </if>
+      <if test="annId != null">
+        ann_id = #{annId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where album_id = #{albumId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.anson.model.CpAlbum">
+    update cp_album
+    set album_name = #{albumName,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      album_describe = #{albumDescribe,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=BIGINT},
+      status_cd = #{statusCd,jdbcType=TINYINT},
+      relation_id = #{relationId,jdbcType=BIGINT},
+      ann_id = #{annId,jdbcType=BIGINT}
+    where album_id = #{albumId,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.anson.model.CpAlbum">
+    <id column="album_id" jdbcType="BIGINT" property="albumId" />
+    <result column="album_name" jdbcType="VARCHAR" property="albumName" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="album_describe" jdbcType="VARCHAR" property="albumDescribe" />
+    <result column="create_user" jdbcType="BIGINT" property="createUser" />
+    <result column="status_cd" jdbcType="TINYINT" property="statusCd" />
+    <result column="relation_id" jdbcType="BIGINT" property="relationId" />
+    <result column="ann_id" jdbcType="BIGINT" property="annId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    album_id, album_name, create_date, update_date, album_describe, create_user, status_cd, 
+    relation_id, ann_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cp_album
+    where album_id = #{albumId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from cp_album
+    where album_id = #{albumId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.anson.model.CpAlbum">
+    insert into cp_album (album_id, album_name, create_date, 
+      update_date, album_describe, create_user, 
+      status_cd, relation_id, ann_id
+      )
+    values (#{albumId,jdbcType=BIGINT}, #{albumName,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{albumDescribe,jdbcType=VARCHAR}, #{createUser,jdbcType=BIGINT}, 
+      #{statusCd,jdbcType=TINYINT}, #{relationId,jdbcType=BIGINT}, #{annId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.anson.model.CpAlbum">
+    insert into cp_album
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="albumId != null">
+        album_id,
+      </if>
+      <if test="albumName != null">
+        album_name,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="albumDescribe != null">
+        album_describe,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="statusCd != null">
+        status_cd,
+      </if>
+      <if test="relationId != null">
+        relation_id,
+      </if>
+      <if test="annId != null">
+        ann_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="albumId != null">
+        #{albumId,jdbcType=BIGINT},
+      </if>
+      <if test="albumName != null">
+        #{albumName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="albumDescribe != null">
+        #{albumDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="statusCd != null">
+        #{statusCd,jdbcType=TINYINT},
+      </if>
+      <if test="relationId != null">
+        #{relationId,jdbcType=BIGINT},
+      </if>
+      <if test="annId != null">
+        #{annId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.anson.model.CpAlbum">
+    update cp_album
+    <set>
+      <if test="albumName != null">
+        album_name = #{albumName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="albumDescribe != null">
+        album_describe = #{albumDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="statusCd != null">
+        status_cd = #{statusCd,jdbcType=TINYINT},
+      </if>
+      <if test="relationId != null">
+        relation_id = #{relationId,jdbcType=BIGINT},
+      </if>
+      <if test="annId != null">
+        ann_id = #{annId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where album_id = #{albumId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.anson.model.CpAlbum">
+    update cp_album
+    set album_name = #{albumName,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      album_describe = #{albumDescribe,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=BIGINT},
+      status_cd = #{statusCd,jdbcType=TINYINT},
+      relation_id = #{relationId,jdbcType=BIGINT},
+      ann_id = #{annId,jdbcType=BIGINT}
+    where album_id = #{albumId,jdbcType=BIGINT}
+  </update>
+</mapper>
