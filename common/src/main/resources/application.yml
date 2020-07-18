@@ -10,7 +10,7 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
     show_sql: true
     #   数据库连接配置
-    url: jdbc:mysql://94.191.61.73:3306/couple_home?useUnicode=true&characterEncoding=utf-8&useSSL=true
+    url: jdbc:mysql://94.191.61.73:3306/couple_home?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
